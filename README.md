@@ -448,3 +448,4 @@ CareTrack Clinic © 2026. All rights reserved.
 **Built with ❤️ for healthcare excellence**
 
 🏥 CareTrack Clinic - Tibbiy Hujjatlar Boshqaruv Tizimi
+# CareTrackClinic2
