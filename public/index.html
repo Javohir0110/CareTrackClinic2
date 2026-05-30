@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CareTrack Clinic - Kirish</title>
+	<link rel="stylesheet" href="/css/styles.css">
+	<link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+	<div class="login-container">
+		<div class="login-card">
+			<div class="login-header">
+				<div class="login-logo">🏥</div>
+				<h1 class="login-title">CareTrack Clinic</h1>
+				<p class="login-subtitle">Tibbiy hujjatlar boshqaruv tizimi</p>
+			</div>
+
+			<form class="login-form" id="login-form">
+				<div id="error-message" class="error-message"></div>
+
+				<div class="form-group">
+					<label class="form-label">Foydalanuvchi nomi</label>
+					<input type="text" class="form-input" id="username" placeholder="Usernamingizni kiriting" required>
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">Parol</label>
+					<div style="position: relative; width: 100%;">
+						<input type="password" class="form-input" id="password" placeholder="Parolingizni kiriting" required style="padding-right: 40px; width: 100%;">
+						<button type="button" id="toggle-password" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #fff; display: flex; align-items: center; justify-content: center; padding: 0;">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye" style="width: 18px; height: 18px; color: #fff;" id="toggle-password-icon"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0z"/><circle cx="12" cy="12" r="3"/></svg>
+						</button>
+					</div>
+				</div>
+
+				<button type="submit" class="login-btn">Kirish</button>
+			</form>
+
+
+		</div>
+	</div>
+
+	<script src="/js/auth.js"></script>
+</body>
+
+</html>

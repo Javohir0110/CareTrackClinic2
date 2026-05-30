@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CareTrack Clinic - Qabulxonachi Dashboard</title>
+	<link rel="stylesheet" href="/css/styles.css">
+	<link rel="stylesheet" href="/css/receptionist-dashboard.css">
+</head>
+
+<body class="dark-mode">
+	<div class="dashboard-container">
+		<!-- Header -->
+		<header class="header">
+			<div class="header-left">
+				<div class="logo">🏥</div>
+				<div class="header-title">CareTrack Clinic</div>
+			</div>
+			<div class="header-right">
+				<button class="icon-button" id="notification-btn" title="Bildirishnomalar">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+				</button>
+				<button class="icon-button" id="cabinet-btn" title="Kabinet">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.925 20.056a6 6 0 0 0-11.851.001"/><circle cx="12" cy="11" r="4"/><circle cx="12" cy="12" r="10"/></svg>
+				</button>
+				<button class="icon-button" id="logout-btn" title="Chiqish">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 12H3"/><path d="m11 18 6-6-6-6"/><path d="M21 5v14"/></svg>
+				</button>
+			</div>
+		</header>
+
+		<!-- Main Content -->
+		<div class="main-content container">
+			<!-- Switcher -->
+			<div class="switcher" id="dashboard-switcher">
+				<button class="switcher-btn active" data-section="doctors">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase-medical"><path d="M12 11v4"/><path d="M14 13h-4"/><path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><path d="M18 6v14"/><path d="M6 6v14"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg> Shifokorlar
+				</button>
+				<button class="switcher-btn" data-section="patients">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></svg> Bemorlar
+				</button>
+				<button class="switcher-btn" data-section="chat">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/></svg> Chat
+				</button>
+			</div>
+
+			<!-- Shifokorlar Section -->
+			<div class="content-section active" id="doctors-section">
+				<div class="section-header">
+					<h2 class="section-title">Shifokorlar Ro'yxati</h2>
+				</div>
+				<div class="search-container">
+					<span class="search-icon">🔍</span>
+					<input type="text" class="search-input" placeholder="Shifokor izlash...">
+				</div>
+				<div class="doctors-grid" id="doctors-grid">
+					<!-- Doctor cards will be loaded here -->
+				</div>
+				<button class="show-all-btn" id="show-all-doctors">Barchasini ko'rish</button>
+			</div>
+
+			<!-- Bemorlar Section -->
+			<div class="content-section" id="patients-section">
+				<div class="section-header">
+					<h2 class="section-title">Bemorlar Ro'yxati</h2>
+					<button class="add-patient-btn">+ Yangi bemor qo'shish</button>
+				</div>
+				<div class="search-container">
+					<span class="search-icon">🔍</span>
+					<input type="text" class="search-input" placeholder="Bemor izlash...">
+				</div>
+				<div class="patients-list" id="patients-list">
+					<!-- Patient items will be loaded here -->
+				</div>
+			</div>
+
+			<!-- Chat Section -->
+			<div class="content-section" id="chat-section">
+				<div class="section-header">
+					<h2 class="section-title">Chat</h2>
+				</div>
+				<div class="chat-container">
+					<div class="chat-list" id="chat-list">
+						<!-- Chat conversations will be loaded here -->
+					</div>
+					<div class="chat-window">
+						<div class="chat-header-bar" id="chat-header-bar" style="display: none; padding: 12px 16px; border-bottom: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.02); font-weight: 600; color: white;"></div>
+						<div class="chat-messages" id="chat-messages">
+							<div class="empty-chat-state" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; height: 100%; text-align: center; padding: 20px; color: var(--text-secondary);">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-more" style="width: 28px; height: 28px; color: var(--neon-cyan);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/></svg>
+								<span style="font-size: 14px;">Suhbatni tanlang</span>
+							</div>
+						</div>
+						<div class="chat-input-area">
+							<input type="file" id="chat-file-input" style="display: none;">
+							<button class="chat-attachment-btn" id="chat-file-btn" title="Fayl biriktirish">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-paperclip"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+							</button>
+							<input type="text" class="chat-input" placeholder="Xabar yozing...">
+							<button class="chat-send-btn" title="Yuborish">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z"/><path d="M6 12h16"/></svg>
+							</button>
+ 						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer class="footer">
+			<div class="footer-content">
+				<span class="footer-text">© 2026 CareTrack Clinic. Barcha huquqlar himoyalangan.</span>
+			</div>
+		</footer>
+	</div>
+
+	<!-- Patient Details Modal -->
+	<div class="modal-overlay" id="patient-modal">
+		<div class="modal">
+			<div class="modal-header">
+				<h2 class="modal-title">Bemor Ma'lumotlari</h2>
+				<button class="modal-close" id="close-patient-modal">&times;</button>
+			</div>
+			<div class="modal-body" id="patient-details-body">
+				<!-- Patient details will be loaded here -->
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-glass" id="close-modal-btn">Yopish</button>
+				<button class="btn btn-secondary" id="edit-patient-btn">Tahrirlash</button>
+				<button class="btn btn-primary" id="book-appointment-btn">Qabulga yozish</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Profile Modal -->
+	<div class="profile-modal" id="profile-modal">
+		<div class="profile-modal-content">
+			<div class="profile-header">
+				<h2>Mening Profilim</h2>
+				<button class="profile-close" id="close-profile-modal"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+			</div>
+			<div class="profile-info" id="profile-info">
+				<!-- Profile info will be loaded here -->
+			</div>
+		</div>
+	</div>
+	<!-- Notification Modal -->
+	<div class="notification-modal" id="notification-modal">
+		<div class="notification-modal-content">
+			<div class="notification-header">
+				<h2>Bildirishnomalar</h2>
+				<div style="display: flex; gap: 10px; align-items: center;">
+					<button id="clear-notifications-btn" style="background: rgba(255, 0, 110, 0.15); border: 1px solid rgba(255, 0, 110, 0.3); color: #ff006e; border-radius: 8px; padding: 4px 8px; font-size: 11px; cursor: pointer; font-weight: bold; transition: all 0.2s;">Tozalash</button>
+					<button class="notification-close" id="close-notification-modal" style="margin-left: 5px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+				</div>
+			</div>
+			<div class="notification-list" id="notification-list">
+				<!-- Notifications will be loaded here -->
+			</div>
+		</div>
+	</div>
+
+	<!-- Booking Success Auto-Closing Modal -->
+	<div class="booking-success-modal" id="booking-success-modal">
+		<div class="booking-success-content">
+			<div class="booking-success-icon">🎉</div>
+			<h2 style="color: white; font-weight: 800;">Qabul Belgilandi!</h2>
+			<p class="booking-success-text" style="margin-top: 10px;">Bemor uchun navbat muvaffaqiyatli olindi.</p>
+			<div class="booking-success-text">Navbat raqami:</div>
+			<div class="booking-success-number" id="success-queue-number">#5</div>
+			<p style="color: var(--text-secondary); font-size: 11px; margin-top: 15px;">Ushbu oyna 3 soniyadan so'ng avtomatik yopiladi...</p>
+		</div>
+	</div>
+
+	<script src="/js/auth.js"></script>
+	<script src="/js/receptionist-dashboard.js"></script>
+</body>
+
+</html>
