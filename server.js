@@ -1,7 +1,7 @@
-import cors from 'cors';
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import express from 'express'
+import cors from 'cors';
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 import auth from './middleware/auth.js'
