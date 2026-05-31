@@ -23,6 +23,15 @@ const app = express()
 const port = process.env.PORT || 3000
 
 // ==================== MIDDLEWARE ====================
+app.use(cors({
+  origin: 'https://care-track-clinic2.vercel.app', // Vercel'dagi front-end manzilingiz
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-user-id'],
+  credentials: true
+}));
+// Preflight OPTIONS so'rovlariga silliq javob qaytarish
+app.options('*', cors());
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static('public'))
