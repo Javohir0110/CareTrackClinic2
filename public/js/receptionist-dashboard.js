@@ -134,7 +134,7 @@ async function fetchNotifications() {
 	if (!session) return
 
 	try {
-		const res = await fetch(`/api/notifications?userId=${session.userId}`)
+		const res = await fetch(`https://caretrackclinic2.onrender.com/api/notifications?userId=${session.userId}`)
 		const data = await res.json()
 		if (data.success) {
 			notificationsList = data.notifications
@@ -187,7 +187,7 @@ function showNotificationModal() {
 			const session = window.authModule.getCurrentSession()
 			if (!session) return
 			try {
-				const res = await fetch('/api/notifications/clear', {
+				const res = await fetch('https://caretrackclinic2.onrender.com/api/notifications/clear', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'
@@ -243,7 +243,7 @@ async function loadDoctors(limit = 6) {
 	grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-secondary); padding: 20px;">Yuklanmoqda...</div>'
 
 	try {
-		const response = await fetch('/api/doctors')
+		const response = await fetch('https://caretrackclinic2.onrender.com/api/doctors')
 		const data = await response.json()
 
 		if (!data.success) {
@@ -306,7 +306,7 @@ async function loadPatients() {
 	list.innerHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 20px;">Yuklanmoqda...</div>'
 
 	try {
-		const response = await fetch('/api/patients')
+		const response = await fetch('https://caretrackclinic2.onrender.com/api/patients')
 		const data = await response.json()
 
 		if (!data.success) {
@@ -502,7 +502,7 @@ async function showPatientAppointments(patient) {
 	}
 
 	try {
-		const res = await fetch(`/api/appointments?patientId=${patient.id}`)
+		const res = await fetch(`https://caretrackclinic2.onrender.com/api/appointments?patientId=${patient.id}`)
 		const data = await res.json()
 		if (data.success) {
 			const list = data.appointments
@@ -521,7 +521,7 @@ async function showPatientAppointments(patient) {
 			try {
 				await Promise.all(pendingAppts.map(async (appt) => {
 					try {
-						const qRes = await fetch(`/api/queue/${appt.doctorId}`)
+						const qRes = await fetch(`https://caretrackclinic2.onrender.com/api/queue/${appt.doctorId}`)
 						const qData = await qRes.json()
 						if (qData.success && qData.queue) {
 							const idx = qData.queue.findIndex(q => q.appointmentId === appt.id || q.id === appt.patientId)
@@ -593,7 +593,7 @@ async function showPatientDiagnoses(patient) {
 	}
 
 	try {
-		const res = await fetch('/api/diagnoses')
+		const res = await fetch('https://caretrackclinic2.onrender.com/api/diagnoses')
 		const data = await res.json()
 		if (data.success) {
 			const list = data.diagnoses.filter(d => d.patientId === patient.id)
@@ -717,13 +717,13 @@ function showPatientForm(mode, patient = null) {
 		try {
 			let response
 			if (mode === 'edit') {
-				response = await fetch(`/api/patients/${patient.id}`, {
+				response = await fetch(`https://caretrackclinic2.onrender.com/api/patients/${patient.id}`, {
 					method: 'PUT',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(formData)
 				})
 			} else {
-				response = await fetch('/api/patients', {
+				response = await fetch('https://caretrackclinic2.onrender.com/api/patients', {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify(formData)
@@ -811,7 +811,7 @@ function showBookAppointmentModal(patient) {
 		}
 
 		try {
-			const response = await fetch('/api/appointments', {
+			const response = await fetch('https://caretrackclinic2.onrender.com/api/appointments', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(appointmentData)
@@ -822,7 +822,7 @@ function showBookAppointmentModal(patient) {
 				// Fetch the doctor's queue to determine queue number
 				let queueNumber = 1
 				try {
-					const qRes = await fetch(`/api/queue/${appointmentData.doctorId}`)
+					const qRes = await fetch(`https://caretrackclinic2.onrender.com/api/queue/${appointmentData.doctorId}`)
 					const qData = await qRes.json()
 					if (qData.success) {
 						queueNumber = qData.queue.length
@@ -834,7 +834,7 @@ function showBookAppointmentModal(patient) {
 				// Auto link patient to doctor if it differs
 				if (patient.linkedDoctor !== appointmentData.doctorId) {
 					try {
-						await fetch(`/api/patients/${patient.id}`, {
+						await fetch(`https://caretrackclinic2.onrender.com/api/patients/${patient.id}`, {
 							method: 'PUT',
 							headers: { 'Content-Type': 'application/json' },
 							body: JSON.stringify({
@@ -885,7 +885,7 @@ async function loadChatList() {
 	chatList.innerHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 10px;">Yuklanmoqda...</div>'
 
 	try {
-		const res = await fetch('/api/auth/users')
+		const res = await fetch('https://caretrackclinic2.onrender.com/api/auth/users')
 		const data = await res.json()
 
 		if (!data.success) {
@@ -972,7 +972,7 @@ async function loadChatMessages(contact) {
 	messagesContainer.innerHTML = '<div style="text-align: center; color: var(--text-secondary); padding: 20px;">Xabarlar yuklanmoqda...</div>'
 
 	try {
-		const response = await fetch(`/api/messages/${currentUser.userId}`)
+		const response = await fetch(`https://caretrackclinic2.onrender.com/api/messages/${currentUser.userId}`)
 		const data = await response.json()
 
 		if (!data.success) {
@@ -1094,7 +1094,7 @@ async function handleEditMessage(msg) {
 	}
 
 	try {
-		const response = await fetch(`/api/messages/${msg.id}`, {
+		const response = await fetch(`https://caretrackclinic2.onrender.com/api/messages/${msg.id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
@@ -1120,7 +1120,7 @@ async function handleDeleteMessage(messageId, contact) {
 	if (!confirm("Ushbu xabarni o'chirmoqchimisiz?")) return
 
 	try {
-		const response = await fetch(`/api/messages/${messageId}`, {
+		const response = await fetch(`https://caretrackclinic2.onrender.com/api/messages/${messageId}`, {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json'
@@ -1230,7 +1230,7 @@ function setupEventListeners() {
 		}
 
 		try {
-			const response = await fetch('/api/messages', {
+			const response = await fetch('https://caretrackclinic2.onrender.com/api/messages', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
@@ -1283,7 +1283,7 @@ function setupEventListeners() {
 				const fileMessageContent = `[FILE:${file.name}|${file.type || 'fayl'}|${base64Data}]`
 				
 				try {
-					const response = await fetch('/api/messages', {
+					const response = await fetch('https://caretrackclinic2.onrender.com/api/messages', {
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json' },
 						body: JSON.stringify({

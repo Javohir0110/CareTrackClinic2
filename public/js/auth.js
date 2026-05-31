@@ -130,7 +130,7 @@ async function handleLogin(event) {
 	}
 
 	try {
-		const response = await fetch('/api/auth/login', {
+		const response = await fetch('https://caretrackclinic2.onrender.com/api/auth/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
