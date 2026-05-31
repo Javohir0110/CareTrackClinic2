@@ -1,3 +1,5 @@
+const app = express();
+app.use(cors());
 export default function auth(req, res, next) {
 	// Authentication verification logic
 	// For simplicity, we check req.headers.authorization or req.query.token if we need,
