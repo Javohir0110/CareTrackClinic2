@@ -717,6 +717,11 @@ async function loadPatientsTable() {
 							</div>
 							<span style="color: rgba(255,255,255,0.2); margin: 0 4px;">|</span>
 							<div style="display: flex; align-items: center; gap: 4px;">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-id-card" style="width: 12px; height: 12px; color: var(--neon-cyan);"><path d="M16 10h2"/><path d="M16 14h2"/><rect width="20" height="14" x="2" y="5" rx="2"/><circle cx="8" cy="12" r="2"/></svg>
+								<span>${patient.passport || 'Pasport kiritilmagan'}</span>
+							</div>
+							<span style="color: rgba(255,255,255,0.2); margin: 0 4px;">|</span>
+							<div style="display: flex; align-items: center; gap: 4px;">
 								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" style="width: 12px; height: 12px; color: var(--neon-cyan);"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
 								<span>${patient.dob}</span>
 							</div>
@@ -832,6 +837,10 @@ async function showPatientDetailsAndDiagnoses(patient) {
 					<span>${patient.phone}</span>
 				</div>
 				<div style="margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-id-card" style="width: 12px; height: 12px; color: var(--neon-cyan);"><path d="M16 10h2"/><path d="M16 14h2"/><rect width="20" height="14" x="2" y="5" rx="2"/><circle cx="8" cy="12" r="2"/></svg>
+					<span>Pasport: ${patient.passport || 'Kiritilmagan'}</span>
+				</div>
+				<div style="margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" style="width: 12px; height: 12px; color: var(--neon-cyan);"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
 					<span>${patient.dob}</span>
 				</div>
@@ -884,9 +893,13 @@ function showPatientForm(mode, patient = null) {
 				<input type="tel" class="form-input" id="form-phone" value="${patient?.phone || ''}" placeholder="+998901234567">
 			</div>
 			<div class="form-group">
-				<label class="form-label">Manzili</label>
-				<input type="text" class="form-input" id="form-address" value="${patient?.address || ''}" placeholder="Manzili">
+				<label class="form-label">Pasport seriyasi</label>
+				<input type="text" class="form-input" id="form-passport" value="${patient?.passport || ''}" placeholder="AA1234567">
 			</div>
+		</div>
+		<div class="form-group">
+			<label class="form-label">Manzili</label>
+			<input type="text" class="form-input" id="form-address" value="${patient?.address || ''}" placeholder="Manzili">
 		</div>
 		<div class="form-group">
 			<label class="form-label">Bog'lanish uchun shifokor</label>
@@ -906,6 +919,7 @@ function showPatientForm(mode, patient = null) {
 			dob: document.getElementById('form-dob').value,
 			gender: document.getElementById('form-gender').value,
 			phone: document.getElementById('form-phone').value.trim(),
+			passport: document.getElementById('form-passport').value.trim(),
 			address: document.getElementById('form-address').value.trim(),
 			linkedDoctor: document.getElementById('form-linked-doctor').value,
 		}

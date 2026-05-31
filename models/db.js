@@ -198,9 +198,9 @@ async function seedDatabase(database) {
 
 	// 3. Seed Patients
 	const patientsCollection = database.collection('patients')
-	const patientExists = await patientsCollection.findOne({ id: 'patient_001' })
+	const patientExists = await patientsCollection.findOne({ id: 'patient_001', passport: { $exists: true } })
 	if (!patientExists) {
-		console.log('🌱 Bemorlar topilmadi, dastlabki bemorlar yuklanmoqda...')
+		console.log('🌱 Bemorlar topilmadi yoki pasport ma\'lumotlari yetishmayapti, dastlabki bemorlar yuklanmoqda...')
 		await patientsCollection.deleteMany({ id: { $in: ['patient_001', 'patient_002', 'patient_003', 'patient_004', 'patient_005', 'patient_006', 'patient_007', 'patient_008'] } })
 		const defaultPatients = [
 			{
@@ -211,6 +211,7 @@ async function seedDatabase(database) {
 				address: 'Tashkent',
 				gender: 'Ayol',
 				linkedDoctor: 'doctor_001',
+				passport: 'AA1234567',
 			},
 			{
 				id: 'patient_002',
@@ -220,6 +221,7 @@ async function seedDatabase(database) {
 				address: 'Samarkand',
 				gender: 'Erkak',
 				linkedDoctor: 'doctor_002',
+				passport: 'AB7654321',
 			},
 			{
 				id: 'patient_003',
@@ -229,6 +231,7 @@ async function seedDatabase(database) {
 				address: 'Bukhara',
 				gender: 'Ayol',
 				linkedDoctor: 'doctor_003',
+				passport: 'AC1122334',
 			},
 			{
 				id: 'patient_004',
@@ -238,6 +241,7 @@ async function seedDatabase(database) {
 				address: 'Tashkent',
 				gender: 'Erkak',
 				linkedDoctor: 'doctor_001',
+				passport: 'AD4433221',
 			},
 			{
 				id: 'patient_005',
@@ -247,6 +251,7 @@ async function seedDatabase(database) {
 				address: 'Fergona',
 				gender: 'Ayol',
 				linkedDoctor: 'doctor_004',
+				passport: 'AE9988776',
 			},
 			{
 				id: 'patient_006',
@@ -256,6 +261,7 @@ async function seedDatabase(database) {
 				address: 'Andijan',
 				gender: 'Erkak',
 				linkedDoctor: 'doctor_005',
+				passport: 'AF5566778',
 			},
 			{
 				id: 'patient_007',
@@ -265,6 +271,7 @@ async function seedDatabase(database) {
 				address: 'Tashkent',
 				gender: 'Ayol',
 				linkedDoctor: 'doctor_002',
+				passport: 'AG2233445',
 			},
 			{
 				id: 'patient_008',
@@ -274,6 +281,7 @@ async function seedDatabase(database) {
 				address: 'Samarkand',
 				gender: 'Erkak',
 				linkedDoctor: 'doctor_006',
+				passport: 'AH9900112',
 			},
 		]
 		await patientsCollection.insertMany(defaultPatients)

@@ -25,6 +25,7 @@ router.get('/queue/:doctorId', async (req, res) => {
 					name: patient.name,
 					dob: patient.dob,
 					phone: patient.phone,
+					passport: patient.passport || '',
 					appointmentTime: appt.appointmentTime,
 					appointmentDate: appt.appointmentDate
 				})

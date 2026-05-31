@@ -41,7 +41,7 @@ router.get('/:id', async (req, res) => {
 
 // Create patient
 router.post('/', async (req, res) => {
-	const { name, dob, phone, address, gender, linkedDoctor } = req.body
+	const { name, dob, phone, address, gender, linkedDoctor, passport } = req.body
 	try {
 		const db = getDB()
 		const patientId = `patient_${Date.now()}`
@@ -52,7 +52,8 @@ router.post('/', async (req, res) => {
 			phone,
 			address,
 			gender,
-			linkedDoctor
+			linkedDoctor,
+			passport: passport || ''
 		}
 
 		await db.collection('patients').insertOne(newPatient)
@@ -71,7 +72,7 @@ router.post('/', async (req, res) => {
 // Update patient
 router.put('/:id', async (req, res) => {
 	const { id } = req.params
-	const { name, dob, phone, address, gender, linkedDoctor } = req.body
+	const { name, dob, phone, address, gender, linkedDoctor, passport } = req.body
 	try {
 		const db = getDB()
 		const updateData = {
@@ -80,7 +81,8 @@ router.put('/:id', async (req, res) => {
 			phone,
 			address,
 			gender,
-			linkedDoctor
+			linkedDoctor,
+			passport: passport || ''
 		}
 
 		const result = await db.collection('patients').findOneAndUpdate(

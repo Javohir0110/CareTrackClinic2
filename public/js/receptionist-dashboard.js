@@ -347,6 +347,11 @@ function createPatientItem(patient) {
 					<span>${patient.phone}</span>
 				</div>
 				<span style="color: rgba(255,255,255,0.2); margin: 0 4px;">|</span>
+				<div style="display: flex; align-items: center; gap: 4px;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-id-card" style="width: 12px; height: 12px; color: var(--neon-cyan);"><path d="M16 10h2"/><path d="M16 14h2"/><rect width="20" height="14" x="2" y="5" rx="2"/><circle cx="8" cy="12" r="2"/></svg>
+					<span>${patient.passport || 'Pasport kiritilmagan'}</span>
+				</div>
+				<span style="color: rgba(255,255,255,0.2); margin: 0 4px;">|</span>
 				<span>${linkedDoctor?.name || 'Biriktirilmagan'}</span>
 			</div>
 		</div>
@@ -420,6 +425,13 @@ function showPatientDetailsModal(patient) {
 			<div class="mb-3">
 				<label class="text-secondary text-sm">Telefon raqami</label>
 				<div class="text-base text-primary">${patient.phone}</div>
+			</div>
+			<div class="mb-3">
+				<label class="text-secondary text-sm">Pasport seriyasi</label>
+				<div class="text-base text-primary" style="display: flex; align-items: center; gap: 6px;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-id-card" style="width: 14px; height: 14px; color: var(--neon-cyan);"><path d="M16 10h2"/><path d="M16 14h2"/><rect width="20" height="14" x="2" y="5" rx="2"/><circle cx="8" cy="12" r="2"/></svg>
+					<span>${patient.passport || 'Kiritilmagan'}</span>
+				</div>
 			</div>
 			<div class="mb-3">
 				<label class="text-secondary text-sm">Manzil</label>
@@ -659,9 +671,13 @@ function showPatientForm(mode, patient = null) {
 					<input type="tel" class="form-input" id="form-patient-phone" value="${patient?.phone || ''}" placeholder="+998901234567">
 				</div>
 				<div class="form-group">
-					<label class="form-label">Manzili</label>
-					<input type="text" class="form-input" id="form-patient-address" value="${patient?.address || ''}" placeholder="Manzili">
+					<label class="form-label">Pasport seriyasi</label>
+					<input type="text" class="form-input" id="form-patient-passport" value="${patient?.passport || ''}" placeholder="AA1234567">
 				</div>
+			</div>
+			<div class="form-group">
+				<label class="form-label">Manzili</label>
+				<input type="text" class="form-input" id="form-patient-address" value="${patient?.address || ''}" placeholder="Manzili">
 			</div>
 			<div class="form-group">
 				<label class="form-label">Bog'lanish uchun shifokor</label>
@@ -688,6 +704,7 @@ function showPatientForm(mode, patient = null) {
 			dob: document.getElementById('form-patient-dob').value,
 			gender: document.getElementById('form-patient-gender').value,
 			phone: document.getElementById('form-patient-phone').value.trim(),
+			passport: document.getElementById('form-patient-passport').value.trim(),
 			address: document.getElementById('form-patient-address').value.trim(),
 			linkedDoctor: document.getElementById('form-linked-doctor').value,
 		}

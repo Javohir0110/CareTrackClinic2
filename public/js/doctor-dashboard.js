@@ -326,6 +326,13 @@ function showQueueModal(patient) {
 				<div class="text-lg font-bold text-primary">${patient.name}</div>
 			</div>
 			<div class="mb-3">
+				<label class="text-secondary text-sm">Pasport seriyasi</label>
+				<div class="text-base text-primary" style="display: flex; align-items: center; gap: 6px;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-id-card" style="width: 14px; height: 14px; color: var(--neon-cyan);"><path d="M16 10h2"/><path d="M16 14h2"/><rect width="20" height="14" x="2" y="5" rx="2"/><circle cx="8" cy="12" r="2"/></svg>
+					<span>${patient.passport || 'Kiritilmagan'}</span>
+				</div>
+			</div>
+			<div class="mb-3">
 				<label class="text-secondary text-sm">Tug'ilgan sanasi</label>
 				<div class="text-base text-primary" style="display: flex; align-items: center; gap: 6px;">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar" style="width: 14px; height: 14px; color: var(--neon-cyan);"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
